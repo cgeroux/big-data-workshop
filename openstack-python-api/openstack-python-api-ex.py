@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-from os import environ as env
-from novaclient.client as nvclient
 from __future__ import print_function
+from os import environ as env
+import novaclient.client as nvclient
 
 def main():
   
@@ -18,15 +18,15 @@ def main():
   #get a list of current servers
   servers=nova.servers.list()
   
-  print()
-  print("dir(servers)=",dir(servers[0]))
-  print()
-  print("nova.servers.list.__doc__=",nova.servers.list.__doc__)
-  print()
+  #print()
+  #print("dir(servers)=",dir(servers[0]))
+  #print()
+  #print("nova.servers.list.__doc__=",nova.servers.list.__doc__)
+  #print()
   
   #print out a list of the current VM names
   for server in servers:
-    print server.name
+    print(server.name)
 
 if __name__=="__main__":
   main()
