@@ -19,7 +19,7 @@ def main():
   servers=nova.servers.list()
   
   #print()
-  #print("dir(servers)=",dir(servers))
+  #print("dir(nova.servers)=",dir(nova.servers))
   #print()
   #print("nova.servers.list.__doc__=",nova.servers.list.__doc__)
   #print()
