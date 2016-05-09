@@ -1,9 +1,9 @@
 TARGET=wordcount
 
 LOCALINPUTFILE=./sampleArchive.txt
-INPUTDIR=/user/${USER}/examples/
+INPUTDIR=/user/${USER}/spark-wc/
 INPUTFILE=sampleArchive.txt
-OUTPUTDIR=${INPUTDIR}/wordcount/spark/python/output
+OUTPUTDIR=${INPUTDIR}/output
 
 
 #Settings for how to run the job:
@@ -43,7 +43,7 @@ uploadinputtohdfs: ${LOCALINPUTFILE}
 	-hdfs dfs -put ${LOCALINPUTFILE} ${INPUTDIR}${INPUTFILE}
 
 showoutput:
-	hdfs dfs -cat ${OUTPUTDIR}/part-00000
+	hdfs dfs -cat ${OUTPUTDIR}/part-*
 
 cleanoutput:
 	-hdfs dfs -rm -R ${OUTPUTDIR}
