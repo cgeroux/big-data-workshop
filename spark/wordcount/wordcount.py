@@ -26,9 +26,10 @@ if __name__ == "__main__":
   
   #read in input
   lines = sc.textFile(inputFile)
-  
-  counts = lines.flatMap(splitWords).map(mapWords).reduceByKey(add)
-  counts.saveAsTextFile(sys.argv[2])#works
+  words = lines.flatMap(splitWords)
+  mappedWords = words.map(mapWords)
+  counts = mappedWords.reduceByKey(add)
+  counts.saveAsTextFile(sys.argv[2])
   
   #convert to a list
   #output = counts.collect()
