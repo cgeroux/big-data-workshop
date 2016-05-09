@@ -5,7 +5,10 @@ from operator import add
 
 from pyspark import SparkContext
 
-
+def splitWords(x):
+  return x.split(' ')
+def mapWords(x):
+  return (x,1)
 if __name__ == "__main__":
   
   #check that we have expected number of arguments
@@ -24,9 +27,7 @@ if __name__ == "__main__":
   #read in input
   lines = sc.textFile(inputFile)
   
-  counts = lines.flatMap(lambda x: x.split(' ')) \
-                .map(lambda x: (x, 1)) \
-                .reduceByKey(add)#no exceptions here
+  counts = lines.flatMap(splitWords).map(mapWords).reduceByKey(add)
   counts.saveAsTextFile(sys.argv[2])#works
   
   #convert to a list
